@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,9 +13,8 @@ Route::get('/dashboard', [UserController::class,'Dashboard'])
 ->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware(['auth','admin'])->group(function () {
-    Route::get('/addproduct', [AdminController::class, 'addProduct'])->name('admin.addproduct');
-    
+Route::middleware(['auth'])->group(function () {
+    Route::resource('products', ProductController::class);
 });
 
 Route::middleware('auth')->group(function () {
