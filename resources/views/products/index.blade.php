@@ -30,7 +30,7 @@
                         <tr class="text-center">
                             <td class="border px-4 py-2">{{ $p->name }}</td>
                             <td class="border px-4 py-2">{{ $p->category }}</td>
-                            <td class="border px-4 py-2">${{ $p->price }}</td>
+                            <td class="border px-4 py-2">Rs.{{ $p->price }}</td>
                             <td class="border px-4 py-2">{{ $p->quantity }}</td>
                             <td class="border px-4 py-2">
                                 <a href="{{ route('products.edit', $p->id) }}" class="px-2 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500">Edit</a>

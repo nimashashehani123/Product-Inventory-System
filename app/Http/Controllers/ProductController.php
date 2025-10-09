@@ -12,7 +12,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->type === 'admin') {
+            $products = Product::latest()->paginate(10); // all products
+        } else {
+            $products = auth()->user()->products()->latest()->paginate(10); // only logged user products
+        }
+
+        return view('products.index', compact('products'));
     }
 
     /**
