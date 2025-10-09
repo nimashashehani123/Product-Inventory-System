@@ -20,12 +20,18 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex flex-col items-center justify-center min-h-screen p-6 lg:p-8">
-
-    <!-- Header with login/register -->
+ @auth
+        @if(auth()->user()->type === 'admin')
+            <script>window.location.href = "{{ route('admin.dashboard') }}";</script>
+        @else
+            <script>window.location.href = "{{ route('dashboard') }}";</script>
+        @endif
+    @endauth
+    
     <header class="w-full lg:max-w-4xl max-w-[335px] mb-6">
     </header>
 
-    <!-- Main Welcome Section -->
+
     <div class="flex flex-col lg:flex-row items-center gap-10 w-full lg:max-w-4xl">
         <div class="flex-1 text-center lg:text-left">
             <h1 class="text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
