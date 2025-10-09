@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -28,8 +28,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+        // validate
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        //logged user
+        $validated['user_id'] = auth()->id();
+
+        //save db
+        Product::create($validated);
+
+        return redirect()->route('products.index')->with('success', 'Product added successfully!');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+        
+        return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+        
+        return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
     }
+
+
 
     /**
      * Display the specified resource.

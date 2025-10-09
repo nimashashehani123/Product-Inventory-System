@@ -31,7 +31,7 @@
                         <input type="number" name="quantity" class="mt-1 w-full rounded-md border-gray-300 shadow-sm" required>
                     </div>
 
-                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-black rounded hover:bg-indigo-700 transition">
                         Save Product
                     </button>
                 </form>
