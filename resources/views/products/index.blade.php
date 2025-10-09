@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 flex-wrap">
             <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 drop-shadow-lg">
                 Manage Products
             </h2>
@@ -16,7 +16,7 @@
 
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             @if(session('success'))
                 <div class="mb-6 p-4 bg-green-100 text-green-800 font-semibold rounded-xl border border-green-200 shadow-md text-center">
                     {{ session('success') }}
@@ -47,14 +47,13 @@
                                            class="px-4 py-1 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition">
                                             Edit
                                         </a>
-                                        <form action="{{ route('products.destroy', $p->id) }}" method="POST"
-                                              onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                        <button type="button" data-id="{{ $p->id }}"
+                                                class="delete-btn px-4 py-1 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">
+                                            Delete
+                                        </button>
+                                        <form id="delete-form-{{ $p->id }}" action="{{ route('products.destroy', $p->id) }}" method="POST" class="hidden">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
-                                                    class="px-4 py-1 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition">
-                                                Delete
-                                            </button>
                                         </form>
                                     </td>
                                 </tr>
@@ -86,4 +85,28 @@
 
         </div>
     </div>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(`delete-form-${id}`).submit();
+                    }
+                });
+            });
+        });
+    </script>
 </x-app-layout>
