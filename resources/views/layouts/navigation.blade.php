@@ -22,6 +22,10 @@
                         </x-nav-link>
                     @endif
                 </div>
+                <!-- Products Link -->
+                <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
+                    {{ __('Products') }}
+                </x-nav-link>
 
             </div>
 
