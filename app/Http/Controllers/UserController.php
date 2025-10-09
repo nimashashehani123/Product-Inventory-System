@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function Dashboard()
+    public function dashboard()
     {
          if(!Auth::check()) return redirect('/');
         return Auth::user()->type === 'admin'
