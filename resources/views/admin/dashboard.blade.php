@@ -7,13 +7,6 @@
                 </h2>
                 <p class="text-sm text-gray-600 mt-1 font-medium">Welcome back! Here's your overview</p>
             </div>
-            <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-gray-200">
-                <div class="relative">
-                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-lg shadow-emerald-500/50"></div>
-                    <div class="absolute inset-0 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
-                </div>
-                <span class="text-sm font-bold text-gray-700">Live</span>
-            </div>
         </div>
     </x-slot>
 
