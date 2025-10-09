@@ -1,67 +1,132 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-wide">
-            Admin Dashboard
-        </h2>
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 drop-shadow-lg">
+                    Admin Dashboard
+                </h2>
+                <p class="text-sm text-gray-600 mt-1 font-medium">Welcome back! Here's your overview</p>
+            </div>
+            <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-gray-200">
+                <div class="relative">
+                    <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-lg shadow-emerald-500/50"></div>
+                    <div class="absolute inset-0 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></div>
+                </div>
+                <span class="text-sm font-bold text-gray-700">Live</span>
+            </div>
+        </div>
     </x-slot>
 
-    <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 min-h-screen relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+        </div>
 
-            <!-- Cards Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
-   <!-- Total Products Card -->
-<div class="relative rounded-3xl p-6 shadow-xl overflow-hidden transform transition-all duration-500
-            bg-gradient-to-br from-indigo-500 to-indigo-600 text-white
-            hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
-            dark:from-indigo-700 dark:to-indigo-900 dark:text-white">
-    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] dark:opacity-20"></div>
-    <h3 class="text-lg font-semibold tracking-wide relative z-10">Total Products</h3>
-    <p class="mt-4 text-5xl font-extrabold relative z-10">{{ $productsCount ?? 0 }}</p>
+           <!-- Stats Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+
+    <!-- Total Products Card -->
+    <div class="group relative overflow-hidden bg-white/80 rounded-3xl p-8 shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 border border-gray-200/50 hover:scale-[1.02] hover:-translate-y-1">
+        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+        <div class="relative">
+            <div class="flex items-center justify-between mb-6">
+                <div class="relative p-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <svg class="relative w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                </div>
+                <span class="px-4 py-1.5 text-xs font-black text-blue-700 bg-blue-100/80 rounded-full shadow-lg border border-blue-200">
+                    PRODUCTS
+                </span>
+            </div>
+            <h3 class="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4 group-hover:text-blue-600 transition-colors">
+                Total Products
+            </h3>
+            <p class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500 origin-left">
+                {{ $productsCount ?? 0 }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Total Users Card -->
+    <div class="group relative overflow-hidden bg-white/80 rounded-3xl p-8 shadow-2xl hover:shadow-emerald-500/30 transition-all duration-500 border border-gray-200/50 hover:scale-[1.02] hover:-translate-y-1">
+        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+        <div class="relative">
+            <div class="flex items-center justify-between mb-6">
+                <div class="relative p-4 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <svg class="relative w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </div>
+                <span class="px-4 py-1.5 text-xs font-black text-emerald-700 bg-emerald-100/80 rounded-full shadow-lg border border-emerald-200">
+                    USERS
+                </span>
+            </div>
+            <h3 class="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4 group-hover:text-emerald-600 transition-colors">
+                Total Users
+            </h3>
+            <p class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500 origin-left">
+                {{ $usersCount ?? 0 }}
+            </p>
+        </div>
+    </div>
+
 </div>
 
-<!-- Total Users Card -->
-<div class="relative rounded-3xl p-6 shadow-xl overflow-hidden transform transition-all duration-500
-            bg-gradient-to-br from-green-500 to-emerald-600 text-white
-            hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
-            dark:from-green-700 dark:to-green-900 dark:text-white">
-    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] dark:opacity-20"></div>
-    <h3 class="text-lg font-semibold tracking-wide relative z-10">Total Users</h3>
-    <p class="mt-4 text-5xl font-extrabold relative z-10">{{ $usersCount ?? 0 }}</p>
+<!-- Recent Products Full-Width Card -->
+<div class="group relative overflow-hidden bg-white/80 rounded-3xl p-10 shadow-2xl hover:shadow-pink-500/30 transition-all duration-500 border border-gray-200/50 hover:scale-[1.01] hover:-translate-y-1 mb-10">
+    <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+    <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-pink-400/20 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+    
+    <div class="relative">
+        <div class="flex items-center justify-between mb-6">
+            <div class="relative p-4 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-500">
+                <svg class="relative w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 4h18M3 10h18M3 16h18" />
+                </svg>
+            </div>
+            <span class="px-4 py-1.5 text-xs font-black text-pink-700 bg-pink-100/80 rounded-full shadow-lg border border-pink-200">
+                RECENT PRODUCTS
+            </span>
+        </div>
+
+        <h3 class="text-xs font-bold text-gray-600 uppercase tracking-widest mb-6 group-hover:text-pink-600 transition-colors">
+            Latest 5 Added
+        </h3>
+
+        <div class="space-y-3">
+            @forelse($recentProducts as $product)
+                <div class="flex justify-between items-center bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl px-6 py-3 shadow-md border border-pink-100 hover:scale-[1.01] transition-all duration-300">
+                    <div>
+                        <p class="text-base font-bold text-gray-800">{{ $product->name }}</p>
+                        <p class="text-sm text-gray-500">{{ ucfirst($product->category) }}</p>
+                    </div>
+                    <span class="text-sm font-semibold text-pink-600">Rs. {{ number_format($product->price, 2) }}</span>
+                </div>
+            @empty
+                <p class="text-sm text-gray-400 text-center">No recent products</p>
+            @endforelse
+        </div>
+    </div>
 </div>
 
-<!-- Recent Products Card -->
-<div class="relative rounded-3xl p-6 shadow-xl overflow-hidden transform transition-all duration-500
-            bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200
-            hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
-    <h3 class="text-lg font-semibold mb-4 border-b border-gray-300 dark:border-gray-600 pb-2">Recent Products</h3>
-    <ul class="text-sm max-h-56 overflow-y-auto space-y-2 scrollbar-hide">
-        @foreach($recentProducts ?? [] as $p)
-            <li class="flex justify-between px-4 py-2 rounded-lg transition-all transform
-                       bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
-                <span class="font-medium">{{ $p->name }}</span>
-                <span class="text-indigo-500 font-semibold">Rs.{{ $p->price }}</span>
-            </li>
-        @endforeach
-    </ul>
-</div>
 
-</div>
+                
+                
+                    
+            </div>
 
-
-           <!-- Manage Button -->
+            <!-- Manage Button -->
             <div class="text-center">
                 <a href="{{ route('products.index') }}"
-                   class="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white text-lg font-bold rounded-2xl shadow-2xl shadow-indigo-500/50 hover:shadow-indigo-500/70 hover:scale-105 transition-all duration-300">
-                    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    <span>Manage Products</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                    </svg>
+                   class="group relative inline-flex items-center gap-4 px-12 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white text-lg font-black rounded-3xl shadow-2xl shadow-blue-500/50 hover:shadow-purple-500/60 hover:scale-105 hover:-translate-y-1 transition-all duration-500 overflow-hidden border-2 border-white/20">
+                    <span class="relative tracking-wide">Manage Products</span>
                 </a>
             </div>
 
