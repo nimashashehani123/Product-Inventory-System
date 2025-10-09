@@ -6,9 +6,6 @@
             </h2>
             <a href="{{ route('products.index') }}"
                class="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-semibold rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 text-sm sm:text-base">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
                 Manage Products
             </a>
         </div>
@@ -41,10 +38,11 @@
                 <!-- Your Products -->
                 <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-2xl rounded-3xl p-8 text-center transform transition hover:scale-105 hover:-translate-y-2 hover:shadow-purple-500/40">
                     <div class="mb-4">
-                        <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M3 3h18v18H3V3z"></path>
+                        <svg class="w-10 h-10 mx-auto text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
+                
                     <h4 class="text-lg sm:text-xl font-semibold">Your Products</h4>
                     <p class="mt-2 text-5xl font-bold drop-shadow-lg">{{ auth()->user()->products()->count() }}</p>
                 </div>

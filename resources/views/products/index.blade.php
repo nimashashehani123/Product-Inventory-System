@@ -17,6 +17,14 @@
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+
+            <!-- Search -->
+            <div class="mb-4 flex justify-end">
+                <input type="text" id="searchInput" placeholder="Search products..." 
+                    class="px-4 py-2 border rounded-lg shadow-sm w-full sm:w-1/3 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+
+            <!-- Table -->
             <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-sm text-gray-800 dark:text-gray-200">
@@ -29,7 +37,7 @@
                                 <th class="px-6 py-3 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tbody id="productsTable" class="divide-y divide-gray-200 dark:divide-gray-700">
                             @forelse($products as $p)
                                 <tr class="hover:bg-indigo-50 dark:hover:bg-gray-700 transition-colors duration-300">
                                     <td class="px-6 py-4 font-semibold truncate max-w-[150px]">{{ $p->name }}</td>
@@ -66,6 +74,8 @@
                     {{ $products->links() }}
                 </div>
             </div>
+
+
         </div>
     </div>
 
@@ -83,7 +93,9 @@
             timerProgressBar: true
         });
     @endif
-</script>
+    </script>
+
+    <!-- Delete Confirmation -->
     <script>
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', function() {
@@ -102,6 +114,26 @@
                         document.getElementById(`delete-form-${id}`).submit();
                     }
                 });
+            });
+        });
+    </script>
+
+    <!--Search -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('productsTable');
+        searchInput.addEventListener('keyup', function() {
+            const filter = searchInput.value.toLowerCase();
+            const rows = table.getElementsByTagName('tr');
+
+            Array.from(rows).forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                const category = row.cells[1].textContent.toLowerCase();
+                if (name.includes(filter) || category.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             });
         });
     </script>
