@@ -35,7 +35,7 @@
                             <td class="border px-4 py-2">
                                 <a href="{{ route('products.edit', $p->id) }}" class="px-2 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500">Edit</a>
 
-                                <form action="{{ route('products.destroy', $p->id) }}" method="POST" class="inline-block">
+                                 <form action="{{ route('products.destroy', $p->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700">
