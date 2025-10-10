@@ -8,7 +8,12 @@ This project allows users to manage products, track stock, view recent updates, 
 
 ## 🎬 Demo Video
 
-  Check out a demo of this project on YouTube:
+
+<a href="https://youtu.be/dSuxMli1TVM?si=oJHF4vD14Vq28H1Q" target="_blank">
+  <img src="https://i.pinimg.com/736x/cb/6b/21/cb6b217399c078c063c1a200f05d6658.jpg" width="200" />
+</a>
+
+*(Click the image above to watch the full demo on YouTube)*
 
 ## 🎯 Features
 
